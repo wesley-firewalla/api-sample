@@ -1,0 +1,14 @@
+{
+  "name": "API Sample",
+  "version": "1.0.0",
+  "title": "API Sample Docs",
+  "url": "https://api.{test|staging}.api-sample.com",
+  "order": [
+    "AUTH",
+    "GRAPHQL",
+    "USERS"
+  ],
+  "template": {
+  	"withCompare": false
+  }
+}

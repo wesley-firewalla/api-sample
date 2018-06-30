@@ -1,0 +1,20 @@
+CREATE DATABASE `api-sample` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE `api-sample`;
+
+CREATE TABLE IF NOT EXISTS users
+(
+  id BIGINT AUTO_INCREMENT PRIMARY KEY,
+  email VARCHAR(250) NOT NULL,
+  first_name VARCHAR(50) NOT NULL,
+  last_name VARCHAR(50) NOT NULL,
+  phone VARCHAR(50) NULL,
+  avatar_url VARCHAR(250) DEFAULT '' NULL,
+  google JSON NULL,
+  facebook JSON NULL,
+  location POINT NULL,
+  deleted_at TIMESTAMP NULL,
+  is_admin BOOLEAN DEFAULT 0 NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  UNIQUE KEY ix_email (email)
+);
