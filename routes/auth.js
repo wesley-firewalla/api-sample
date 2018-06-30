@@ -5,38 +5,6 @@ const r2 = require('r2')
 
 module.exports = router => {
   router
-    /**
-     * @api {post} /login Login
-     * @apiName Login
-     * @apiGroup AUTH
-     * @apiDescription Login with facebook or google access token, return JWT.
-     *
-     * **Google:**
-     *
-     * > <https://developers.google.com/+/web/api/rest/oauth>
-     * >
-     * > Get `access_token` from <https://developers.google.com/oauthplayground>, choose Google OAuth2 API v2 > <https://www.googleapis.com/auth/userinfo.email>
-     *
-     * **Facebook:**
-     *
-     * > Get `access_token` from <https://developers.facebook.com/tools/accesstoken>
-     *
-     * Later you can put the header `Authorization: Bearer <token>` in the `/graphql` api request.
-     *
-     * @apiParam {string="google","facebook"} type
-     * @apiParam {string} access_token Google/Facebook access token
-     *
-     * @apiParamExample {json} Request Example
-     * {
-     *   "type": "facebook",
-     *   "access_token": "123456"
-     * }
-     *
-     * @apiSuccessExample {json} Success Response
-     * {
-     *   "token": "the-token-string"
-     * }
-     */
     .post('/login', async (ctx, next) => {
       const type = ctx
         .checkBody('type')

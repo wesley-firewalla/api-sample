@@ -5,7 +5,7 @@ This is the sample code to help you start a graphql api quickly.
 ## Development
 
 ```sh
-npm run dev
+yarn dev
 ```
 
 ## Deploy
@@ -21,7 +21,7 @@ pm2 start pm2.config.js --only api-<env> # env can be `development`, `test`, `st
 ## API Doc
 
 ```sh
-npm run doc
+yarn doc
 ```
 
 ## Social Credentials

@@ -9,16 +9,6 @@ const UserService = require('../services/user')
 const DataLoaders = require('../schema/data-loaders')
 
 module.exports = router => {
-  /**
-   * @api {post} /graphql GraphQL
-   * @apiName GraphQL
-   * @apiGroup GRAPHQL
-   * @apiDescription The main endpoint of all Queries and Mutations
-   * @apiHeaderExample {json} Header Example:
-   * {
-   *    "Authorization": "Bearer <token>"
-   * }
-   */
   router.post('/graphql', auth({ required: false }), (ctx, next) => {
     return graphqlKoa({
       schema: schema(ctx.db),
@@ -32,12 +22,6 @@ module.exports = router => {
 
   if (process.env.NODE_ENV !== 'production') {
     router
-      /**
-       * @api {get} /graphiql GraphiQL
-       * @apiName GraphiQL
-       * @apiGroup GRAPHQL
-       * @apiDescription In Dev env check all Types, Queries and Mutations
-       */
       .get('/graphiql', async (ctx, next) => {
         const userService = new UserService(ctx.db)
         const firstUser = await userService.findFirst()
@@ -54,15 +38,6 @@ module.exports = router => {
           passHeader: `'Authorization': 'Bearer ${token}'`
         })(ctx, next)
       })
-      /**
-       * @api {get} /schema Schema
-       * @apiName Schema
-       * @apiGroup GRAPHQL
-       * @apiDescription Download GraphQL Schema
-       *
-       * Download schema for Apollo iOS/Android: <https://www.apollographql.com/docs/ios/downloading-schema.html>
-       *
-       */
       .get('/schema', (ctx, next) => {
         ctx.body = printSchema(schema(ctx.db))
       })
